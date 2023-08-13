@@ -1,7 +1,7 @@
  Question 14:
 https://www.youtube.com/watch?v=i_ljK9gmstY&list=PLBTZqjSKn0IeKBQDjLmzisazhqQy4iGkb&index=14
 
- Amazon Prime Subscription Rate SQL Logic
+ Amazon Prime Subscription Rate SQL Logic:
 
 ```sql
 
@@ -44,7 +44,7 @@ VALUES
 
 ```
    
-   Solution
+   Solution:
 
 ```sql 
 
