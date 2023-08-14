@@ -1,5 +1,5 @@
 Question 15 & 16:
-https://www.youtube.com/watch?v=i_ljK9gmstY&list=PLBTZqjSKn0IeKBQDjLmzisazhqQy4iGkb&index=14
+https://www.youtube.com/watch?v=6hfsRqmyvog&list=PLBTZqjSKn0IeKBQDjLmzisazhqQy4iGkb&index=15
 
 Customer Retention and Churn Analysis:
 
@@ -25,6 +25,7 @@ insert into transactions values
 
 ```
 Customer Retention Solution: 
+
 ```sql
 
 with cte_1 as 
@@ -50,11 +51,6 @@ SELECT mth,
        count(CASE WHEN (mth - last_date) is null THEN cust_id END) AS churn_customer
 FROM cte
 group by mth
-
-
-
-
-
 
 
 
