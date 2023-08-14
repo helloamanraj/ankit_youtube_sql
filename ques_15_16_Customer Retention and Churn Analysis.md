@@ -1,5 +1,5 @@
 Question 15 & 16:
-https://www.youtube.com/watch?v=6hfsRqmyvog&list=PLBTZqjSKn0IeKBQDjLmzisazhqQy4iGkb&index=15
+https://www.youtube.com/watch?v=i_ljK9gmstY&list=PLBTZqjSKn0IeKBQDjLmzisazhqQy4iGkb&index=14
 
 Customer Retention and Churn Analysis:
 
