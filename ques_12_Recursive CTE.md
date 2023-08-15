@@ -31,7 +31,7 @@ group by product_id, year(dates)
 order by product_id
 
 ```
-Another Solution without the use of recursive function
+Another Solution without the use of recursion
 
 ```sql
 
