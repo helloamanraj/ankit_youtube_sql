@@ -4,7 +4,8 @@ https://www.youtube.com/watch?v=Ck1gQrlS5pQ&list=PLBTZqjSKn0IeKBQDjLmzisazhqQy4i
 Solving 4 Tricky SQL Problems:
 
 
-```sqlCREATE TABLE students(
+```sql
+CREATE TABLE students(
   studentid INT,
   studentname VARCHAR(255),
   subject VARCHAR(255),
@@ -28,7 +29,9 @@ INSERT INTO students VALUES (5, 'John Mike', 'Subject3', 98, 2, '2022-11-02');
 ```
 
 Solution 27.1: 
-```sqlwith cte as (
+
+```sql
+with cte as (
 select *, round(avg(marks) over (partition by subject order by testdate),2) as avg_score from students
 )
 
@@ -37,14 +40,16 @@ where avg_score < marks
 ```
 
 Solution 27.2:
-```sqlselect 
+```sql
+select 
 round(100*count(distinct case when marks > 90 then studentid  else null end ) / count(distinct studentid),2) as percentage
 from students 
 ```
 
 Solution 27.3:
 
-```sqlwith cte as (
+```sql
+with cte as (
 select subject, marks,
 rank()over(partition by subject order by marks) as desc_rank,
 rank()over(partition by subject order by marks desc) inc_rank
@@ -60,7 +65,8 @@ group by subject
 
 Solution 27.4:
 
-```sqlwith cte as (
+```sql
+with cte as (
 select *, lag(marks) 
 over (partition by studentid  order by marks) as prev_marks
 from students
