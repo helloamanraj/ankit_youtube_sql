@@ -14,6 +14,7 @@ insert into tasks  values ('2019-01-01','success'),('2019-01-02','success'),('20
 ,('2019-01-05','fail'),('2019-01-06','success')
 
 ```
+
 Solution: 
 ```sql
 WITH cte AS (
