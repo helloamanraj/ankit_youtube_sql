@@ -56,5 +56,4 @@ with cte as (
 select *
 from cte2
 where rnk = 1
-
 ```
