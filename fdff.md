@@ -1,4 +1,0 @@
-```sql
-
-select git fdfdfd
-```
