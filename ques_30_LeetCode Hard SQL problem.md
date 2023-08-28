@@ -11,7 +11,8 @@ city varchar(20)
 )
 
 insert into players_location
-values ('Sachin','Mumbai'),('Virat','Delhi') , ('Rahul','Bangalore'),('Rohit','Mumbai'),('Mayank','Bangalore');```
+values ('Sachin','Mumbai'),('Virat','Delhi') , ('Rahul','Bangalore'),('Rohit','Mumbai'),('Mayank','Bangalore');
+```
 
 
 Solution:
@@ -30,4 +31,5 @@ max(case when city = 'Mumbai' then name end) as Mumbai,
 max(case when city = 'Delhi' then name end) as Delhi,
 max(case when city = 'Bangalore' then name end) as Bangalore
 from cte
-group by rw```
+group by rw
+```
