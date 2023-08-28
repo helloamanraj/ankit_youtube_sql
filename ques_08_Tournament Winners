@@ -4,8 +4,7 @@ https://www.youtube.com/watch?v=IQ4n4n-Y9z8&list=PLBTZqjSKn0IeKBQDjLmzisazhqQy4i
 
 Leetcode Hard problem 2| Tournament Winners
 
-```sql
-create table players
+```sql create table players
 (player_id int,
 group_id int)
 
@@ -31,14 +30,13 @@ insert into matches values (1,15,45,3,0);
 insert into matches values (2,30,25,1,2);
 insert into matches values (3,30,15,2,0);
 insert into matches values (4,40,20,5,2);
-insert into matches values (5,35,50,1,1);
-```
+insert into matches values (5,35,50,1,1); ```
 
 
 
 Solution:
 
-```sql
+```sql 
 with cte as (
  select first_Player as player_id , first_score as score from matches
  
