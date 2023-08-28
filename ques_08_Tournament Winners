@@ -39,7 +39,6 @@ insert into matches values (5,35,50,1,1);
 Solution:
 
 ```sql
-
 with cte as (
  select first_Player as player_id , first_score as score from matches
  
