@@ -6,9 +6,6 @@ Amazon Interview Question for BIE position:
 
 
 ```sql
-
-
-
  CREATE TABLE subscriber (
  sms_date date ,
  sender varchar(20) ,
@@ -23,10 +20,6 @@ INSERT INTO subscriber VALUES ('2020-4-1', 'Pawan', 'Avinash',20);
 INSERT INTO subscriber VALUES ('2020-4-1', 'Vibhor', 'Pawan',5);
 INSERT INTO subscriber VALUES ('2020-4-1', 'Pawan', 'Vibhor',8);
 INSERT INTO subscriber VALUES ('2020-4-1', 'Vibhor', 'Deepak',50);
-
-
-
-
 ```
 
 Solution: 

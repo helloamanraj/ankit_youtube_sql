@@ -31,10 +31,6 @@ insert into billings values
 ,('Sehwag' ,'01-JAN-1989', 15)
 ,('Dhoni' ,'01-JAN-1989', 20)
 ,('Sachin' ,'05-Feb-1991', 30)
-
-
-
-
 ```
 Solution: 
 
@@ -49,17 +45,6 @@ from billings
 )
 select a.emp_name,sum(bill_hrs*bill_rate) as total_house_costs from HoursWorked a join bill b on a.emp_name=b.emp_name and a.work_date between b.bill_date and b.enddate
 group by a.emp_name
-
-
-
-
-
-
-
-
-
-
-
 ```
 
 

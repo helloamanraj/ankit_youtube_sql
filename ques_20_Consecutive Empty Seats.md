@@ -21,10 +21,6 @@ insert into bms values
 ,(12,'N')
 ,(13,'Y')
 ,(14,'Y');
-
-
-
-
 ```
 
 Solution_1 by using row number: 
@@ -43,9 +39,6 @@ where is_empty = 'Y'
 )
 select seat_no from cte2 
 where empt_seat_cons >= 3
-
-
-
 ```
 
 Solution_2 by using lead and lag:
@@ -65,12 +58,6 @@ where (is_empty = 'Y' and prev_2 = 'Y' and prev_1 = 'Y') or
       (is_empty = 'Y' and prev_1 = 'Y' and next_1 = 'Y') or
       (is_empty = 'Y' and next_2 = 'Y' and next_1 = 'Y')
 order by seat_no
-
-
-
-
-
-
 ```
 
 Solution_2 Best Solution:

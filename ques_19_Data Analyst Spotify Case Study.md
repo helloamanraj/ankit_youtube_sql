@@ -25,11 +25,6 @@ insert into activity values (1,'app-installed','2022-01-01','India')
 ,(6,'app-installed','2022-01-04','Pakistan')
 ,(6,'app-purchase','2022-01-04','Pakistan');
 
-
-
-
-
-
 ```
 
 

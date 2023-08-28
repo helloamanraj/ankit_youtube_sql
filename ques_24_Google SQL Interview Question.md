@@ -26,15 +26,6 @@ insert into company_users values (1,1,'English')
 ,(2,6,'Spanish')
 ,(2,7,'English');
 
-
-
-
-
-
-
-
-
-
 ```
 
 Solution:
@@ -51,10 +42,5 @@ having count(user_id) >= 2
 select company_id, count(company_id) as cnt_of_emp from cte
 group by company_id 
 having count(company_id) >= 2
-
-
-
-
-
 
 ```

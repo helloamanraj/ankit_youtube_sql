@@ -21,10 +21,6 @@ VALUES ('S1', 'Q1', 200),
 ('S3', 'Q1', 800),
 ('S3', 'Q2', 750),
 ('S3', 'Q3', 900);
-
-
-
-
 ```
 
 Solution_1:
@@ -43,18 +39,6 @@ FROM stores
 )
 
 select distinct store,  concat('Q', qua_sum - sum_qua_num) as miss_quater from cte
-
-
-
-
-
-
-
-
-
-
-
-
 ```
 
 Solution_2:

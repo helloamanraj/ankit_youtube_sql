@@ -22,10 +22,6 @@ budget int
 insert into customer_budget values (100,400),(200,800),(300,1500);
 
 
-
-
-
-
 ```
 
 Solution:
@@ -41,9 +37,5 @@ select cb.*, c.product_id, count(1) as no_of_products
 ,group_concat(product_id) from customer_budget as cb join cte as c 
 on cb.budget > cum_sum
 group by 2
-
-
-
-
 
 ```

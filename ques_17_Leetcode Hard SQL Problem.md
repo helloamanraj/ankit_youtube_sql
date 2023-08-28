@@ -20,9 +20,6 @@ insert into UserActivity values
 ,('Alice','Travel','2020-02-24','2020-02-28')
 ,('Bob','Travel','2020-02-11','2020-02-18');
 
-
-
-
 ```
 Solution:
 
@@ -37,11 +34,4 @@ from useractivity
 
 SELECT username, activity ,startdate, enddate from cte  
 where grp =1 or rnk =2 
-
-
-
-
-
-
-
 ```

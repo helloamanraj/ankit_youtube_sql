@@ -15,8 +15,6 @@ insert into exams values
 ,(3,'Chemistry',80)
 ,(4,'Chemistry',71),(4,'Physics',54);
 
-
-
 ```
 
 
@@ -34,7 +32,5 @@ select student_id from cte
 where subject in ('chemistry', 'physics') and rnk = 1
 group by student_id
 having count(distinct subject) =2 and count(distinct rnk)=1
-
-
 
 ```
