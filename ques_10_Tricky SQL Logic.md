@@ -1,4 +1,4 @@
-Question 27:
+Question 10:
 https://www.youtube.com/watch?v=WrToXXN7Jb4&list=PLBTZqjSKn0IeKBQDjLmzisazhqQy4iGkb&index=10
 
 Tricky SQL Logic:

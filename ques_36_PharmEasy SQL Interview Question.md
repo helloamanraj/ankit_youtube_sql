@@ -1,5 +1,5 @@
 Question 36:
-https://www.youtube.com/watch?v=y-CeVtidYJE&list=PLBTZqjSKn0IeKBQDjLmzisazhqQy4iGkb&index=35
+https://www.youtube.com/watch?v=e4IILSHtKl4&list=PLBTZqjSKn0IeKBQDjLmzisazhqQy4iGkb&index=36
 
 PharmEasy SQL Interview Question:
 

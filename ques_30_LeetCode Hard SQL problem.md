@@ -1,4 +1,4 @@
-Question 29:
+Question 30:
 https://www.youtube.com/watch?v=e-I9SxbLky8&list=PLBTZqjSKn0IeKBQDjLmzisazhqQy4iGkb&index=30
 
 LeetCode Hard SQL problem:
