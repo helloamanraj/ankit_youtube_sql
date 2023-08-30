@@ -26,10 +26,11 @@ values(1, 2, '2019-01-01 09:00:00.000'),
        (2, 5, '2019-08-02 10:45:00.000'),
        (2, 4, '2019-08-02 11:00:00.000');
        ```
-
+```
 Solution:
 
-```sql  with cte as (
+```sql
+with cte as (
 
 SELECT *
       ,  first_value(recipientid) over(partition by cast(datecalled as date) order by datecalled) as fcall
