@@ -23,7 +23,8 @@ student_id int,
 student_name varchar(20)
 );
 insert into students values
-(1,'Daniel'),(2,'Jade'),(3,'Stella'),(4,'Jonathan'),(5,'Will');```
+(1,'Daniel'),(2,'Jade'),(3,'Stella'),(4,'Jonathan'),(5,'Will');
+```
 
 
 Solution:

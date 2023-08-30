@@ -17,7 +17,7 @@ values ('OUT','181868',13),('OUT','2159010',8)
 ,('SMS','9168204',1),('OUT','9168204',576),('INC','2159010',5),('INC','2159010',4),('SMS','2159010',1)
 ,('SMS','4535614',1),('OUT','181868',20),('INC','181868',54),('INC','218748',20),('INC','2159010',9)
 ,('INC','197432',66),('SMS','2159010',1),('SMS','4535614',1);```
-
+```
 Solution: 
 ```sql
 
@@ -45,4 +45,5 @@ where call_type = 'INC'
 group by call_number
 ) as c4
 on c3.call_number = c4.call_number
-where call_type = 'out' and c3.call_in_out_duration > c4.max_in_out```
+where call_type = 'out' and c3.call_in_out_duration > c4.max_in_out
+```
