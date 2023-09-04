@@ -27,7 +27,8 @@ insert into employee values (13,'C',2345);
 insert into employee values (14,'C',2645);
 insert into employee values (15,'C',2645);
 insert into employee values (16,'C',2652);
-insert into employee values (17,'C',65);```
+insert into employee values (17,'C',65);
+```
 
 Solution: 
 

@@ -22,9 +22,10 @@ from drivers as t1
 )
 select id,count(id) as total_rides, max(matched) as profitable_rides from cte
 group  by id
-
+```
 
 another solution:
+```sql
 
 select * from drivers
 
@@ -36,4 +37,5 @@ from drivers
 
 select id, count(id) as total_trips, sum(profit_count) as profitable_trips
 from cte
-group by id```
+group by id
+```

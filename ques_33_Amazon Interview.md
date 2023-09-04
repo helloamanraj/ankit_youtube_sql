@@ -25,7 +25,8 @@ insert into emp values(7,'Sanjay',12000,2,13,200,'IT','Male');
 insert into emp values(8,'Ashish',7200,2,12,200,'IT','Male');
 insert into emp values(9,'Mukesh',7000,6,51,300,'HR','Male');
 insert into emp values(10,'Rakesh',8000,6,50,300,'HR','Male');
-insert into emp values(11,'Akhil',4000,1,31,500,'Ops','Male');```
+insert into emp values(11,'Akhil',4000,1,31,500,'Ops','Male');
+```
 
 
 Solution:

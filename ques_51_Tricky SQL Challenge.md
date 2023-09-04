@@ -38,3 +38,25 @@ select * , dense_rank() over ( order by total_sum desc, max_number desc ) as d_r
  ) as A
  where d_rnk <= 2
 ```
+
+
+Another Solution:
+```sql
+WITH agg_data AS(
+SELECT section,
+min(number) AS min_no,
+max(number) AS max_no,
+DENSE_RANK()OVER(ORDER BY sum(number)-min(number) DESC) AS rn
+FROM section_data
+GROUP BY section)
+,
+final_sol as (
+select s.*, rn,
+dense_rank() over (partition by rn order by a.max_no desc) as den_rnk
+from agg_data as a
+inner join section_data as s on a.section = s.section and  s.number != a.min_no
+where rn <=2
+)
+
+select section, number from final_sol
+where rn <= 2 and den_rnk = 1```

@@ -24,7 +24,8 @@ VALUES
 (15, 14, 20, 10, 200);
 
 INSERT INTO Sell(date, time, qty, per_share_price, total_value)
-VALUES (15, 13, 8, 20, 240), (15, 15, 12, 20, 160), (15, 16, 5, 20, 160) ;```
+VALUES (15, 13, 8, 20, 240), (15, 15, 12, 20, 160), (15, 16, 5, 20, 160) ;
+```
 
 Solution: 
 
