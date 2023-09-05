@@ -35,8 +35,7 @@ and remaining_balance > 0
 cte2 as (
 select * , (select coalesce(min(remaining_balance), 50000) from cte where positions = 'senior' and remaining_balance > 0) as balance
 from cte
-where true
-and positions = 'junior'
+where positions = 'junior'
 ),
 cte3 as (
 select count(*) as total_juniors
