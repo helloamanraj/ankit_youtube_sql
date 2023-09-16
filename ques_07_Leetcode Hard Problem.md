@@ -50,4 +50,5 @@ from cte
 group by request_at
 order by request_at)
 
-select *, round(100*(cancelled_count/ total_count),2) as cancellation_percentage from cte2```
+select *, round(100*(cancelled_count/ total_count),2) as cancellation_percentage from cte2
+```
