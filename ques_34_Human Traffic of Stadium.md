@@ -30,7 +30,6 @@ id - row_number() over (order by visit_date ) as grp from stadium
 where no_of_people > 100
 )
 
-
 select id, visit_date,no_of_people from cte
 where grp in (
 select grp from cte
