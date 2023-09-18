@@ -25,7 +25,6 @@ INSERT INTO Trade_tbl VALUES ('TRADE6', '10:10:01', 'ITJunction4All', -300, 19);
 Solution:
 
 ```sql
-
 with cte as (
 SELECT a.Trade_id as first_trade, b.trade_id as second_trade , TIMESTAMPDIFF( second, (a.trade_timestamp) ,(b.trade_timestamp))  as time_diff
 ,round((abs(a.price - b.price)/a.price) *100,0) as price_per
