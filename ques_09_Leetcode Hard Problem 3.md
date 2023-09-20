@@ -6,7 +6,6 @@ Leetcode Hard Problem 3 | Market Analysis 2
 
 
 ```sql
-
 create table users (
 user_id         int     ,
  join_date       date    ,
