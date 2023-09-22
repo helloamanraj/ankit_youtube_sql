@@ -32,7 +32,6 @@ Solution:
 
 
 ```sql
-
 with cte as (
 select *,
 cast(rank() over (partition by city order by days ) as signed) as rnk_1,
