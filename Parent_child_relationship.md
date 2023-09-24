@@ -47,3 +47,44 @@ values
 (618,747),
 (618,904);
 ```
+
+Solution 1:
+```sql
+with cte as (
+select c_id, p.name , p_id , t.name as parent, t.gender as par_gender from relations as r
+left join people as p on r.c_id = p.id 
+left join people as t on r.p_id = t.id
+)
+
+select name, 
+max(case when par_gender = "M" then parent end) as father,
+max(case when par_gender = "F" then parent end) as mother
+from cte
+group by name
+```
+
+Solution 2:
+```sql
+SELECT
+    c.name AS child,
+    father.name AS fathername,
+    mother.name AS mothername
+FROM
+    (SELECT
+            r.c_id,
+            MAX(CASE WHEN p.gender = 'M' THEN p.name END) AS father_name,
+            MAX(CASE WHEN p.gender = 'F' THEN p.name END) AS mother_name
+        FROM
+            relations AS r
+        LEFT JOIN
+            people AS p ON r.p_id = p.id
+        GROUP BY
+            r.c_id
+    ) AS parent_data
+LEFT JOIN
+    people AS c ON parent_data.c_id = c.id
+LEFT JOIN
+    people AS father ON father.name = parent_data.father_name
+LEFT JOIN
+    people AS mother ON mother.name = parent_data.mother_name;
+```
