@@ -45,7 +45,6 @@ Solution_2:
 
 
 ```sql
-
 WITH RECURSIVE cte AS (
     (SELECT DISTINCT store, 1 AS q_no FROM stores)
     UNION ALL
