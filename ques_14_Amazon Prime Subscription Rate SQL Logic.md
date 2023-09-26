@@ -47,11 +47,8 @@ VALUES
    Solution:
 
 ```sql 
-
-
 SELECT round(100*(count(distinct u.user_id) / (select count(distinct(user_id)) from events where type = 'Music')),2) as perc
 FROM users AS u
 LEFT JOIN events AS e ON u.user_id = e.user_id AND DATEDIFF(e.access_date, u.join_date) < 30 and e.TYPE = 'P'
 where u.user_id in (select e.user_id from events where type = 'Music')
-
 ```
