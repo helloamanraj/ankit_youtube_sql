@@ -63,8 +63,6 @@ order by seat_no
 Solution_2 Best Solution:
 
 ```sql
-
-
 with cte as (
 SELECT *, 
    sum(case when is_empty = 'Y' then 1 else 0 end) OVER (ORDER BY seat_no rows between 2 preceding and current row) AS prev_1 ,
