@@ -73,10 +73,4 @@ FROM bms
 
 select seat_no from cte
 where prev_1 = 3 or current_row= 3 or next_row =3
-
-
-
-
-
-
 ```
