@@ -61,7 +61,6 @@ FROM (
     SELECT grp2 AS grp FROM cte2 WHERE grp2 IS NOT NULL
 ) AS subquery
 GROUP BY grp;
-
 ```
 
 
