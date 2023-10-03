@@ -22,7 +22,6 @@ Solution:
 
 
 ```sql
-
 with cte as (
 select *,
 rank() over (partition by student_id order by marks) as rnk
