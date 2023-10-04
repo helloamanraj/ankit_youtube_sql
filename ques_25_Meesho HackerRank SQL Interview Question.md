@@ -27,8 +27,6 @@ insert into customer_budget values (100,400),(200,800),(300,1500);
 Solution:
 
 ```sql
-
-
 with cte as (
 select *,sum(cost) over (order by product_id) as cum_sum from products 
 )
