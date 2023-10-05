@@ -20,8 +20,6 @@ budget int
 );
 
 insert into customer_budget values (100,400),(200,800),(300,1500);
-
-
 ```
 
 Solution:
