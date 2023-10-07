@@ -4,8 +4,6 @@ https://www.youtube.com/watch?v=i_ljK9gmstY&list=PLBTZqjSKn0IeKBQDjLmzisazhqQy4i
  Amazon Prime Subscription Rate SQL Logic:
 
 ```sql
-
-
 drop table users
 create table users
 (

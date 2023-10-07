@@ -16,7 +16,6 @@ insert into sales values(1,'2019-01-25','2019-02-28',100),(2,'2018-12-01','2020-
 ```
 Solution: 
 ```sql
-
 WITH RECURSIVE cte AS (
    select min(period_start) as dates, max(period_end) as max_date from sales
     union all
