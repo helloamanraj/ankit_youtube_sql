@@ -24,6 +24,7 @@ insert into UserActivity values
 Solution:
 
 ```sql
+
 with cte as (
 select *, rank() over (partition by username order by endDate desc) as rnk,
 count(username) over (partition by username) as grp
