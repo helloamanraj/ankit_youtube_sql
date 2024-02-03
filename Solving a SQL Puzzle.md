@@ -11,7 +11,7 @@ insert into input values (1,'1+4',10),(2,'2+1',5),(3,'3-2',40),(4,'4-1',20)
 
 ```
 
-Solution:
+Solution1:
 
 ```sql
 with cte as (
@@ -26,4 +26,19 @@ when substring(c.formula,2,1) = '-' then c.value - i.value else null end as new_
 from cte as c
 inner join input as i on c.rh = i.id 
 order by c.id 
+```
+
+Solution2: 
+
+```sql
+with cte as (
+
+select *, right(formula, 1) as rt from input
+)
+
+select c.id, c.formula,c.value, rt, i.value as up_val,
+(case when substring(c.formula,2,1) = '+' then  c.value + i.value 
+when substring(c.formula,2,1) = '-' then  c.value - i.value end) as final_val
+from cte as c
+left join input as i on c.rt = i.id
 ```
