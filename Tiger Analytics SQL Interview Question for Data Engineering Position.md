@@ -31,3 +31,22 @@ where type = 'Child'
 ) as b
 on a.rw_nm = b.rw_nm
 ```
+
+Solution2: 
+```sql
+with lft as (
+select person, type, left(person,1) as grp,
+row_number() over(partition by left(person,1) order by person) as rw_nm
+from family as c1
+where left(person,1) = 'A'
+)
+, rgh as (
+select person, type, left(person,1) as grp,
+row_number() over(partition by left(person,1) order by person) as rw_nm
+from family as c1
+where left(person,1) = 'C'
+)
+
+select l.person, r.person from lft as l left join rgh as r on
+l.rw_nm = r.rw_nm
+```
