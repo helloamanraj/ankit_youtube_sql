@@ -58,7 +58,7 @@ group by team_1
 union all 
 
 select team_2, count(*),
-sum(case when team_1 = winner then 1 else 0 end) as w_flag,
+sum(case when team_2 = winner then 1 else 0 end) as w_flag,
 sum(case when winner = 'DRAW' then 1 else 0 end) as d_flag
 from icc_world_cup
 group by team_2
