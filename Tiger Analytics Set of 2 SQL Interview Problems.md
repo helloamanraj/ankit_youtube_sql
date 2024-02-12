@@ -59,7 +59,7 @@ INSERT INTO sales (order_date, customer, qty) VALUES ('2021-04-01', 'C5', '15');
 INSERT INTO sales (order_date, customer, qty) VALUES ('2021-04-01', 'C6', '10');
 ```
 
-Solution:
+Solution1:
 ```sql
 with cte as(
 select *, month(order_date) as mth, 
@@ -70,6 +70,17 @@ select mth, count(rn) as new_customer from cte
 where rn = 1
 group by mth
 ```
+
+Solution2:
+```sql
+select min_date, count(distinct customer) as new_cust from (
+select order_date, customer,
+min(order_date) over (partition by customer order by order_date) as min_date from sales
+) as x
+group by min_date
+```
+
+
 
 
 
