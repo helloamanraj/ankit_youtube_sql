@@ -21,4 +21,5 @@ sum(case when exam=3 then score else 0 end ) exam3,
 sum(case when exam=4 then score else 0 end ) exam4
 from exams
 group by name 
+
 ```
