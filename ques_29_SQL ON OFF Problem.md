@@ -17,5 +17,13 @@ values
 
 Solution:
 ```sql
+with cte as(
+select *, lag(status,1) over (order by event_time) as prev_status from event_status
+)
+,cte2 as (
+select event_time, status , sum(case when status = 'on' and prev_status = 'off' then 1 else 0 end) over(order by event_time) as grp from cte
+)
 
+select min(event_time) as in_time , max(event_time) as out_time , FLOOR(TIME_TO_SEC(TIMEDIFF(MAX(event_time), MIN(event_time))) / 60) as duration from cte2
+group by grp
 ```
