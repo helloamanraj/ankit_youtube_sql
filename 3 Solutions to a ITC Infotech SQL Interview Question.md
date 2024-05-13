@@ -27,10 +27,8 @@ Solution1:
 with cte as (
 Select *, row_number () over (order by distance,source, destination) as rw from city_distance
 )
-
 select distance, source, destination from (select distance, source, destination, rw , min(rw) over (partition by distance) as mini from cte) as x
 where rw = mini
-
 ```
 
 Solution2:
