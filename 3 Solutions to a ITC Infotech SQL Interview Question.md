@@ -23,7 +23,6 @@ INSERT INTO city_distance(distance, source, destination) VALUES ('80', 'Tirumala
 
 Solution1:
 ```sql
-
 with cte as (
 Select *, row_number () over (order by distance,source, destination) as rw from city_distance
 )
@@ -37,11 +36,9 @@ Solution2:
 with cte as (
 Select *, row_number () over (order by distance,source, destination) as rw from city_distance
 )
-
 select c1.distance, c1.source, c1.destination from cte as c1 
 left join cte as c2 on c1.source = c2.destination and c1.destination = c2.source 
 where c2.distance is null or c1.distance != c2.distance or c1.rw < c2.rw 
-
 ```
 
 Solution3:
