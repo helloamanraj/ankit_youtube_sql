@@ -20,7 +20,6 @@ select *, concat(id,name) as ct, 'ent_sou' as col_table from source
 union all
 select *, concat(id,name) as ct, 'ent_target' as col_table from target
 )
-
 select distinct id,   
 case when (count(col_table) over (partition by id order by id)) =1  then col_table
 else 'mismatch' END AS comment
