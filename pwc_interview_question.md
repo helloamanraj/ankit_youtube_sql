@@ -22,8 +22,7 @@ select *, lag(revenue,1,0) over (partition by company order by year)  as lg,
 revenue - lag(revenue,1,0) over (partition by company order by year) as amt 
 from company_revenue 
 )
-,
-cte2 as ( 
+,cte2 as ( 
 SELECT company, 
 sum(case when (amt) > 0 then 1 else 0 end ) as positve_amt ,
 count(company) as grp_cmpy
