@@ -29,7 +29,6 @@ count(company) as grp_cmpy
 FROM cte
 GROUP BY company
 )
-
 select company from cte2
 where grp_cmpy = positve_amt
 ```
