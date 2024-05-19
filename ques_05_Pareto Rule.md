@@ -15,7 +15,6 @@ ALTER TABLE you_tube_data.superstore_orders
 CHANGE COLUMN `ï»¿Row_ID` row_id INT; -- Adjust the data type as needed
 
 
-
 with cte as(
 Select product_id,SUM(sales) sales from superstore_orders group by product_id),
 cte1 as(
