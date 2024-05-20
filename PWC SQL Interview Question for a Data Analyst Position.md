@@ -14,7 +14,6 @@ insert into target values(1,'A'),(2,'B'),(4,'X'),(5,'F');
 
 Solution1: 
 ```sql
-
 with cte as (
 select *, concat(id,name) as ct, 'ent_sou' as col_table from source
 union all
