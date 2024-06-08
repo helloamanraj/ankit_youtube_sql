@@ -13,7 +13,6 @@ create table relations
     FOREIGN KEY (c_id) REFERENCES people(id),
     foreign key (p_id) references people(id)
 );
-
 insert into people (id, name, gender)
 values
     (107,'Days','F'),(145,'Hawbaker','M'),(155,'Hansel','F'),(202,'Blackston','M'),(227,'Criss','F'),(278,'Keffer','M'),
