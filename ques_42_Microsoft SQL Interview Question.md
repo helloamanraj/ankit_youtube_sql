@@ -24,7 +24,6 @@ select * ,
 sum(salary) over(partition by experience order by salary asc rows between unbounded preceding and current row) as running_sal
 from candidates
 )
-
 , ex_senior as (
 select * from cte
 where experience = 'Senior' and running_sal < 70000
