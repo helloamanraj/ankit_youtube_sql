@@ -18,7 +18,6 @@ insert into candidates values
 
 Solution:
 ```sql
-
 with cte as (
 select * ,
 sum(salary) over(partition by experience order by salary asc rows between unbounded preceding and current row) as running_sal
