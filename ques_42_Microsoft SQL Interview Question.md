@@ -27,7 +27,6 @@ from candidates
 select * from cte
 where experience = 'Senior' and running_sal < 70000
 )
-
 select * from cte
 where experience = 'Junior' and running_sal < 70000- (select sum(salary) from ex_senior)
 union all
