@@ -32,7 +32,6 @@ CROSS JOIN trade_tbl AS b
 where a.Trade_Timestamp < b.trade_timestamp
 order by a.trade_id, b.trade_id
 )
-
 select * from cte
 where price_per > 10 and time_diff < 10
 ```
