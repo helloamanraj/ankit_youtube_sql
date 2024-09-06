@@ -29,4 +29,5 @@ order by year_open, city_id
 
 select year_open, count(city_id) as new_cities from cte
 where rnk = 1
-group by year_open```
+group by year_open
+```

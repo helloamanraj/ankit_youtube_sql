@@ -39,7 +39,6 @@ select *, row_number() over (partition by customer_id, yr order by event_date de
 select *, year(event_date) as yr, month(event_date) as mth from subscription_history
 ) as x where yr = '2020'
 )
-
 select customer_id, marketplace, event_date, event, subscription_period from cte
 where customer_id not in (select customer_id from cte where event = 'c' )
 and subscription_period + mth > 12
