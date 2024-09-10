@@ -42,4 +42,4 @@ select *, year(event_date) as yr, month(event_date) as mth from subscription_his
 select customer_id, marketplace, event_date, event, subscription_period from cte
 where customer_id not in (select customer_id from cte where event = 'c' )
 and subscription_period + mth > 12
-```
+```***6
