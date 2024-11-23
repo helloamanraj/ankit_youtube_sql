@@ -19,7 +19,7 @@ insert into customer_orders values(1,100,cast('2022-01-01' as date),2000),(2,200
 
 ```
 
-Solution:
+Solution 1:
 
 ```sql
 with cte as (
@@ -31,5 +31,21 @@ from customer_orders
 select order_date, sum(case when rw = 1 then 1 else 0 end) as first_visit,
 sum(case when rw != 1 then 1 else 0 end) as repeat_cust
 from cte
+group by order_date
+```
+
+Solution 2
+
+```sql
+with cte as (
+select customer_id, min(order_date) as first_order_date 
+from customer_orders
+group by customer_id
+)
+
+select  order_date,
+sum(case when order_date = first_order_date then 1 else 0 end) as new_customer,
+sum(case when order_date != first_order_date then 1 else 0 end) as repeat_customer
+from cte as c inner join customer_orders as co on co.customer_id = c.customer_id 
 group by order_date
 ```
