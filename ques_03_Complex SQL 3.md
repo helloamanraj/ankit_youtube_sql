@@ -21,7 +21,7 @@ values ('A','Bangalore','A@gmail.com',1,'CPU'),('A','Bangalore','A1@gmail.com',1
 ,('B','Bangalore','B@gmail.com',2,'DESKTOP'),('B','Bangalore','B1@gmail.com',2,'DESKTOP'),('B','Bangalore','B2@gmail.com',1,'MONITOR');
 ```
 
-Solution:
+Solution 1:
 
 ```sql
 with cte as 
@@ -38,4 +38,23 @@ case when 1st>2nd then 1 else 2 end as floor_no,
 total_visits,
 total_resources
 from cte
+```
+
+Solution 2:
+```sql
+
+with cte as (
+select name, floor,resources,count(floor) over (partition by name) as total_floor, count(floor) 
+over (partition by name, floor order by name ) as cnt
+from entries
+)
+, cte2 as (
+select name, group_concat(distinct resources) as grp from cte
+group by name ) 
+
+select distinct name, total_floor,  floor  as most_visited_floor, grp from 
+(select c2.name, floor, resources, total_floor, rank() over (partition by name order by cnt desc) as rnk, grp
+from cte2 c2 join cte c1 on c2.name = c1.name
+) as x
+where rnk = 1
 ```
