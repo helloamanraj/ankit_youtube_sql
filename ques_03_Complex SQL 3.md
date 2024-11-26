@@ -58,3 +58,13 @@ from cte2 c2 join cte c1 on c2.name = c1.name
 ) as x
 where rnk = 1
 ```
+
+Solution 3:
+
+```sql
+select name, count(*) as total_visits, 
+(select floor from entries b where b.name=a.name group by floor order by count(*) desc limit 1) as most_floor_visited, 
+group_concat(distinct resources) as resources_used
+ from entries a 
+ group by name
+```
