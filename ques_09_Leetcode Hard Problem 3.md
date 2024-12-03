@@ -52,7 +52,8 @@ with cte as (
 SELECT DISTINCT user_id,
        CASE WHEN SUM(CASE WHEN rw = 2 AND item_fav = 'Yes' THEN 1 ELSE 0 END) > 0 THEN 'Yes' ELSE 'No' END AS p
 FROM cte
-GROUP BY user_id;```
+GROUP BY user_id;
+```
 
 Solution2:
 
