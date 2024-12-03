@@ -37,7 +37,7 @@ drop table orders
 ```
 
 
-Solution:
+Solution1:
 
 ```sql
 with cte as (
@@ -53,3 +53,27 @@ SELECT DISTINCT user_id,
        CASE WHEN SUM(CASE WHEN rw = 2 AND item_fav = 'Yes' THEN 1 ELSE 0 END) > 0 THEN 'Yes' ELSE 'No' END AS p
 FROM cte
 GROUP BY user_id;```
+
+Solution2:
+
+```sql
+with cte as (
+
+select order_id, order_date,  i.item_id, item_brand, u.user_id as user_id, join_date, favorite_brand from users as u
+left join orders as o on  U.user_id = o.seller_id
+left join items as i on i.item_id = o.item_id
+order by order_id
+
+)
+, cte2 as (
+select distinct User_id, case when item_brand = favorite_brand  then "Yes" else "No" end as Item_fav_brand
+from (select *, rank() over (partition by user_id order by order_date ) as rnk from cte) as x
+where rnk = 2)
+
+select * from cte2
+
+union all
+
+select user_id , "No" from users
+where user_id not in (select user_id from cte2)
+```
