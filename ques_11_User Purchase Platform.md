@@ -18,7 +18,7 @@ insert into spending values(1,'2019-07-01','mobile',100),(1,'2019-07-01','deskto
 
 ```
 
-Solution:
+Solution 1:
 
 ```sql
 
@@ -31,4 +31,22 @@ from cte1 group by 1,2
 union
 select distinct spend_date, 'both' platform, 0 total_amount, 0 total_users
 from spending where spend_date not in (select spend_date from cte1 where platform = 'mobile,desktop')
+```
+
+Solution 2:
+```sql
+with cte as (
+(select spend_date,  max(platform) as platform, sum(amount) as amount from spending
+group by spend_date, user_id
+having count(distinct platform)= 1)
+union all
+(select spend_date,  "Both" as platform, sum(amount) amount from spending
+group by spend_date, user_id
+having count(distinct platform)= 2)
+union 
+(select distinct spend_date,  "Both" as platform , 0 as amount from spending)
+)
+
+select spend_date, platform, sum(amount) from cte
+group by spend_date, platform
 ```
