@@ -24,7 +24,7 @@ insert into transactions values
 ;
 
 ```
-Customer Retention Solution: 
+Customer Retention Solution 1: 
 
 ```sql
 
@@ -35,6 +35,18 @@ select *,lag(month(order_date)) over (partition by cust_id order by month(order_
 select month (order_date) month ,count(case when last_date= 1 then cust_id end ) as customer_retained from cte_1 
 group by month (order_date)
 
+```
+
+Solution 2:
+```sql
+with cte as (
+select order_id, cust_id, month(order_date) as mth, lag(month(order_date),1) over (partition by cust_id order by order_id) as ld
+,amount from transactions
+)
+
+select  mth,  sum(case when mth - ld = 1 then 1 else 0 end) as repeat_cust 
+from cte
+group by mth
 ```
 
 Churn Analysis Solution: 
