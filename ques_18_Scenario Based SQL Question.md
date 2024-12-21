@@ -12,11 +12,10 @@ work_date date,
 bill_hrs int
 )
 insert into HoursWorked values
-('Sachin', '01-JUL-1990' ,3)
-,('Sachin', '01-AUG-1990', 5)
-,('Sehwag','01-JUL-1990', 2)
-,('Sachin','01-JUL-1991', 4)
-
+('Sachin', '1990-07-01', 3),
+('Sachin', '1990-08-01', 5),
+('Sehwag', '1990-07-01', 2),
+('Sachin', '1991-07-01', 4);
 
 
 create table billings 
@@ -27,18 +26,14 @@ bill_rate int
 )
 delete from billings;
 insert into billings values
-('Sachin','01-JAN-1990',25)
-,('Sehwag' ,'01-JAN-1989', 15)
-,('Dhoni' ,'01-JAN-1989', 20)
-,('Sachin' ,'05-Feb-1991', 30)
+('Sachin', '1990-01-01', 25),
+('Sehwag', '1989-01-01', 15),
+('Dhoni', '1989-01-01', 20),
+('Sachin', '1991-02-05', 30);
 ```
 Solution: 
 
 ```sql
-
-
-
-
 with bill AS
 (select emp_name,bill_rate,bill_date, lead(bill_date,1,'9999-12-31') over(partition by emp_name order by bill_date) as enddate
 from billings
