@@ -58,9 +58,19 @@ SELECT *, concat('Q',q_no) as q_update FROM cte
 select  c.store as store, c.q_update as quater from cte2 as c
 left join stores as s on c.q_update = s.quarter and c.store = s.store
 where s.store is null
+```
+Solution 3: 
 
+```sql 
 
+ with cte as 
+ (select store, Quarter, Right(Quarter,1) as nm, row_number() over (partition by store) as rw
+ from stores
+ )
 
+select distinct store, Concat('Q', (10 - sum(nm) over (partition by store))) as sm from cte
+ 
+```
 
 
 
