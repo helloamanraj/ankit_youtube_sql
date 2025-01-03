@@ -18,7 +18,7 @@ insert into exams values
 ```
 
 
-Solution:
+Solution 1:
 
 
 ```sql
@@ -32,4 +32,12 @@ where subject in ('chemistry', 'physics') and rnk = 1
 group by student_id
 having count(distinct subject) =2 and count(distinct rnk)=1
 
+```
+
+Solution 2:
+
+```sql
+select student_id from exams 
+group by student_id
+having count(subject) = 2 and count(distinct marks) = 1
 ```
