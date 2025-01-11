@@ -28,7 +28,7 @@ insert into covid values('BANGALORE','2022-01-04',400);
 
 ```
 
-Solution:
+Solution 1:
 
 
 ```sql
@@ -44,4 +44,18 @@ select city , (rnk_1 - rnk_2 )as diff from cte)
 select city from cte2
 group by city
 having count(distinct diff) = 1 and max(diff) = 0
+```
+
+Solution 2:
+
+```sql
+with cte1 as(
+select *,
+lag(cases,1,0) over(partition by city order by days) as prev
+from covid
+)
+select city
+from cte1
+group by city
+having SUM(case when cases>prev then 0 else 1 end)=0
 ```
