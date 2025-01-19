@@ -26,12 +26,15 @@ Solution:
 
 ```sql
 with cte as (
-select *,sum(cost) over (order by product_id) as cum_sum from products 
+select *, sum(cost) over (order by cost rows between unbounded preceding and current row) as cum
+from products
 )
 
-select cb.*, c.product_id, count(1) as no_of_products
-,group_concat(product_id) from customer_budget as cb join cte as c 
-on cb.budget > cum_sum
-group by 2
+select customer_id, budget, count(*),
+group_concat(product_id)  
+from cte as c
+join customer_budget on c.cum <= budget
+group by customer_id, budget
+
 
 ```
