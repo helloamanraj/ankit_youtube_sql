@@ -22,7 +22,7 @@ INSERT INTO subscriber VALUES ('2020-4-1', 'Pawan', 'Vibhor',8);
 INSERT INTO subscriber VALUES ('2020-4-1', 'Vibhor', 'Deepak',50);
 ```
 
-Solution: 
+Solution1 : 
 
 ```sql
 with cte as (
@@ -33,4 +33,16 @@ from subscriber
 )
 
 select sms_date, couple,max(sender) as sender, max(receiver) as receiver,  sum(sms_no) from cte 
-group by 1,2```
+group by 1,2
+```
+
+Solution2:
+
+```sql
+with cte as (
+select *, least(sender, receiver) as p1, greatest(sender, receiver) as p2 from subscriber
+)
+
+select sms_date, p1 as sender, p2 as receiver, sum(sms_no) as total from cte
+group by sms_date, p1, p2
+```
