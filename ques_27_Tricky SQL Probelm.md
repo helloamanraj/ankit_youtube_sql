@@ -49,31 +49,40 @@ from students
 Solution 27.3:
 
 ```sql
+
 with cte as (
-select subject, marks,
-rank()over(partition by subject order by marks) as desc_rank,
-rank()over(partition by subject order by marks desc) inc_rank
+
+select * , rank() over (partition by subject order by marks) as rnk_asc,
+rank() over (partition by subject order by marks desc)  as rnk_dsc, 
+count(*) over (partition by subject ) as cnt
 from students
+
 )
 
-select subject, 
-max(case when desc_rank = 2 then marks end) as second_lowest_marks,
-max(case when inc_rank = 2 then marks end) as second_highest_marks
-from cte
-group by subject
+SELECT subject,  MAX(CASE 
+            WHEN cnt > 2 AND rnk_asc = 2 THEN marks 
+            WHEN cnt <= 2 AND rnk_asc = 1 THEN marks 
+            ELSE NULL 
+        END) AS second_smallest_marks,
+    MAX(CASE 
+            WHEN cnt > 2 AND rnk_dsc = 2 THEN marks 
+            WHEN cnt <= 2 AND rnk_dsc = 1 THEN marks 
+            ELSE NULL 
+        END) AS second_highest_marks
+FROM cte 
+GROUP BY subject;
 ```
 
 Solution 27.4:
 
 ```sql
 with cte as (
-select *, lag(marks) 
-over (partition by studentid  order by marks) as prev_marks
-from students
+select *, lead(marks,1 ) over (partition by studentname order by subject) as next_marks from students 
+order by studentid
 )
 
-select *, 
-case when prev_marks < marks then 'inc' else 'dec' end as inc_dec
-from cte
+select *, case when marks < next_marks then "Incre" 
+when next_marks < marks then "Desc" else Null
+ end as marks from cte
  
  ```
