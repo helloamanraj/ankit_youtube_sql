@@ -57,4 +57,5 @@ from emp
 )
 Select * from cte1
 where rnk = case when total_emp>=3 THEN 3
-                 when total_emp<3 THEN total_emp```
+                 else total_emp
+                 ```
