@@ -17,7 +17,8 @@ insert into brands values
 ,(null,'eclair')
 ,('Biscuits','britannia')
 ,(null,'good day')
-,(null,'boost');```
+,(null,'boost');
+```
 
 
 Solution:
