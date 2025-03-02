@@ -33,7 +33,8 @@ from brands
 
 select min(category) over (order by rn rows between unbounded preceding and current row) as cat,
 brand_name
-from cte ```
+from cte 
+```
 
 Another Solution:
 ```sql
@@ -47,4 +48,5 @@ select
 (case when category is null then ( select category from cte as c1 where c1.rn < c2.rn and category is not null order by  rn desc limit 1)
 else category end)
 category, brand_name
-from cte as c2```
+from cte as c2
+```
