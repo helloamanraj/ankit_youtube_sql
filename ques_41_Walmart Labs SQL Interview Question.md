@@ -3,7 +3,8 @@ https://www.youtube.com/watch?v=3qEfsSC27_4&list=PLBTZqjSKn0IeKBQDjLmzisazhqQy4i
 
 
 Walmart Labs SQL Interview Question:
-```sql create table phonelog(
+```sql 
+create table phonelog(
     Callerid int,
     Recipientid int,
     Datecalled datetime
@@ -25,7 +26,7 @@ values(1, 2, '2019-01-01 09:00:00.000'),
        (2, 5, '2019-08-02 10:00:00.000'),
        (2, 5, '2019-08-02 10:45:00.000'),
        (2, 4, '2019-08-02 11:00:00.000');
-       ```
+       
 ```
 Solution:
 
