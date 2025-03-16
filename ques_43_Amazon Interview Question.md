@@ -36,7 +36,8 @@ values (8, 'Ashish', 200,5000,2,12);
 insert into emp
 values (9, 'Mukesh',300,6000,6,51);
 insert into emp
-values (10, 'Rakesh',500,7000,6,50);```
+values (10, 'Rakesh',500,7000,6,50);
+```
 
 
 
