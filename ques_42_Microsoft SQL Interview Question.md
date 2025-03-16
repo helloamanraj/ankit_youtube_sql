@@ -30,7 +30,8 @@ where experience = 'Senior' and running_sal < 70000
 select * from cte
 where experience = 'Junior' and running_sal < 70000- (select sum(salary) from ex_senior)
 union all
-select * from ex_seniors```
+select * from ex_seniors
+```
 
 
 Another Solution:
@@ -49,4 +50,5 @@ with cte as
                          ON c.runing_sum <=tb.budget
                )
 
-SELECT * FROM cte2 WHERE runing_sum1<=budget```
+SELECT * FROM cte2 WHERE runing_sum1<=budget
+```
