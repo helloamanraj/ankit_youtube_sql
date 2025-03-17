@@ -28,7 +28,7 @@ group  by id
 another solution:
 ```sql
 
-select * from drivers
+
 
 with cte as (
 Select *, lead(start_loc,1) over(partition by id order by start_time) as next_start,
