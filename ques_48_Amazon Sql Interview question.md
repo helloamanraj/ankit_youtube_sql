@@ -42,7 +42,8 @@ having count(distinct purchasedate) > 1
 )
 
 select userid from cte
-where dist_prod = count_prod```
+where dist_prod = count_prod
+```
 
 
 Another Solution:

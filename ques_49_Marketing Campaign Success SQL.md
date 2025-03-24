@@ -117,6 +117,7 @@ insert into marketing_campaign values (10,'2019-01-01',101,3,55),
 
 
 Solution:
+Doubted solution
 ```sql
 with cte as(
 select *, row_number() over (partition by user_id, product_id order by created_at) as rw_on_product
@@ -126,4 +127,28 @@ from marketing_campaign
 
 
 select distinct user_id from cte
-where rw_user_id > 1 and rw_on_product = 1```
+where rw_user_id > 1 and rw_on_product = 1
+```
+
+Solution: 
+
+```sql
+with rank_data as (
+select user_id, created_at, product_id, rank() over (partition by user_id order by created_at) as rnk
+from marketing_campaign
+)
+, first_pur as (
+select * from rank_data 
+where rnk = 1
+)
+
+, except_first as (
+select * from rank_data where rnk > 1
+)
+, cte as (
+select f.user_id as user_id_dis, f.product_id as prd, e.user_id as user_id_n, e.product_id as prd2 from except_first as e
+left join first_pur as f on f.user_id = e.user_id and f.product_id = e.product_id
+where f.product_id is null
+)
+select user_id_n from cte
+```
