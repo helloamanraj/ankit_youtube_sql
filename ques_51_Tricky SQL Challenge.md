@@ -40,7 +40,7 @@ select * , dense_rank() over ( order by total_sum desc, max_number desc ) as d_r
 ```
 
 
-Another Solution:
+Solution 2:
 ```sql
 WITH agg_data AS(
 SELECT section,
@@ -59,4 +59,23 @@ where rn <=2
 )
 
 select section, number from final_sol
-where rn <= 2 and den_rnk = 1```
+where rn <= 2 and den_rnk = 1
+```
+
+Solution 3:
+
+```sql
+with cte as (
+
+select section, number, max(number) over (partition by section ) as mx_nm, 
+row_number() over (partition by section order by number desc) as rw from section_data
+
+)
+, cte2 as (
+select section, number, max(case when rw = 2 then number + mx_nm end) over (partition by section) as ttl, mx_nm, rw from cte
+)
+
+select * from (select section, number, dense_rank() over ( order by mx_nm desc,ttl desc) as rnk_2, ttl,rw from cte2
+) as x
+where rnk_2 in (1,2) and rw in (1,2)
+```
