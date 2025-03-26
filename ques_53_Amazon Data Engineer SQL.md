@@ -54,7 +54,7 @@ select r.hall_id, r.start_date, r.end_date from r_cte as r
 group by r.flag
 ```
 
-Another solution:
+Solution 2:
 
 ```sql
 
@@ -71,4 +71,17 @@ from cte
 
 select hall_id, min(start_date) as start_date, max(end_date) from cte2
 group by grp, hall_id
+```
+
+Solution 3:
+```sql
+with cte as (
+select *,
+case when start_date <= max(end_date) over(partition by hall_id order by start_date, end_date rows between unbounded preceding and 1 preceding) then 0 else 1 end cond  
+from hall_events
+)
+
+select hall_id, start_date, end_date from 
+(select hall_id, case when cond = 1 then start_date end as start_date, max(end_date) over (partition by hall_id) as end_date from cte ) as x
+where start_date is not null
 ```
