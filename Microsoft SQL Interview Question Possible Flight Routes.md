@@ -61,11 +61,40 @@ LEFT JOIN airports e ON e.port_code = b.end_port
 SELECT *,
 case when end_port is null then timestampdiff(minute, initial_port_time, connecting_end_time)
 ELSE timestampdiff(minute, initial_port_time, end_time) end as "overall_time_taken_minutes"
-FROM foundation
+FROM cte
 WHERE initial_city_name = "new york" AND (connecting_end_city_name= "tokyo" or end_city_name = "tokyo"))
 
 
 SELECT *
 , dense_rank()over(order by overall_time_taken_minutes ASC) as ranker
-FROM final_data
+FROM cte
+```
+
+Solution 2:
+
+```sql
+
+with cte1 as(
+select af.*, a.city_name as start_city, b.city_name as end_city 
+from flights as af
+inner join airports as a on a.port_code = af.start_port 
+inner join airports as b on b.port_code = af.end_port 
+)
+, cte2 as (
+select A.flight_id as A_flight_id, B.flight_id as B_flight_id,
+A.start_city as start_city, b.start_city as middle_city, b.end_city as end_city,
+a.start_time as a_start_time, b.end_time as B_end_time
+from cte1 as A
+inner join cte1 as B on A.end_port = B.start_port
+where a.start_city = 'new york' and b.end_city = 'tokyo' and a.end_time<=b.start_time
+)
+select start_city,middle_city,end_city,  A_flight_id + ' ,' + B_flight_id as flight_id,
+DATEDIFF(MINUTE, a_start_time,B_end_time) as time_taken
+from req_tab
+union all
+select start_city, null as middle_city,end_city,flight_id, DATEDIFF(MINUTE, start_time,end_time) as time_taken
+from cte1
+where start_city = 'new york' and end_city = 'tokyo';
+
+
 ```
